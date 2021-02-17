@@ -1,3 +1,8 @@
+# Build directories
+_shark_build
+_experiments_build
+artifacts
+
 # Prerequisites
 *.d
 
