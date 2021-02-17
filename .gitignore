@@ -1,6 +1,7 @@
 # Build directories
 _shark_build
 _experiments_build
+_ccache
 artifacts
 
 # Prerequisites

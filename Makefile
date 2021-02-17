@@ -19,7 +19,9 @@ shark_build: shark-mod/CMakeLists.txt
     	-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_INSTALL_PREFIX=../artifacts \
 		../shark-mod
-	make -C _shark_build -j $(nproc)
+	make CCACHE_DIR=/workspaces/shark-experiments/_ccache \
+		 CCACHE_COMPILERCHECK="content" \
+		 -C _shark_build -j $(nproc)
 
 shark_test: _shark_build
 	make -C _shark_build -j $(nproc) test
