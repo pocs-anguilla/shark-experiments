@@ -1,0 +1,3 @@
+[submodule "shark-mod"]
+	path = shark-mod
+	url = ../shark-mod
