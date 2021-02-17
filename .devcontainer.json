@@ -1,0 +1,19 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile",
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-vscode.cpptools",
+        "jeff-hykin.better-cpp-syntax",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake"
+    ],
+    "forwardPorts": [
+        8000,
+        8888
+    ]
+}
