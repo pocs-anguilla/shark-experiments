@@ -9,6 +9,7 @@ experiments: shark-experiments/CMakeLists.txt
 
 shark_build: shark-mod/CMakeLists.txt
 	mkdir -p _shark_build
+	mkdir -p artifacts
 	cd _shark_build ;\
 	set -x; cmake \
 		-DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang-cxx14-libstdcxx.cmake \
@@ -16,6 +17,7 @@ shark_build: shark-mod/CMakeLists.txt
 		-DBUILD_EXAMPLES=OFF \
     	-DBUILD_DOCUMENTATION=OFF \
     	-DBUILD_SHARED_LIBS=ON \
+		-DCMAKE_INSTALL_PREFIX=../artifacts \
 		../shark-mod
 	make -C _shark_build -j $(nproc)
 
