@@ -22,6 +22,8 @@ using namespace shark;
 #include <fstream>
 #include <ios>
 #include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 // Boost
 #include <boost/format.hpp>
@@ -75,6 +77,11 @@ class RunTrials {
             fn.init();
             opt.init(fn);
 
+            std::cout << "Removing ouput directory" << std::endl;
+            fs::remove_all("output");
+            std::cout << "Creating output directory" << std::endl;
+            fs::create_directory("output");
+
             int nextEvaluationsLimit = 0;
             while (nextEvaluationsLimit < 50001) {
                 std::string optName;
@@ -83,7 +90,7 @@ class RunTrials {
                 } else {
                     optName = std::string("NSGAII");
                 }
-                auto filename = boost::str(boost::format("%1%_%2%_%3%_%4%.fitness.csv") % fn.name() % optName % (t + 1) % nextEvaluationsLimit);
+                auto filename = boost::str(boost::format("output/%1%_%2%_%3%_%4%.fitness.csv") % fn.name() % optName % (t + 1) % nextEvaluationsLimit);
                 std::cout << "Writing file: " << filename << std::endl;
                 std::ofstream logfile;
                 logfile.open(filename);
