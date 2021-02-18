@@ -10,7 +10,7 @@ set(Python_FIND_IMPLEMENTATIONS CPython PyPy)
 find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 
 # Find Shark
-find_package(Shark REQUIRED)
+find_package(Shark REQUIRED HINTS ${SHARK_HINT_DIR})
 include(${SHARK_USE_FILE})
 
 # Find Boost
@@ -36,9 +36,12 @@ set(FITNESS_SRC
 add_executable(experiment_0 ${EXP0_SRC})
 target_link_libraries(experiment_0 PRIVATE ${SHARK_LIBRARIES})
 target_link_libraries(experiment_0 PRIVATE ${Boost_LIBRARIES})
+target_link_libraries(experiment_0 PRIVATE ${Python3_LIBRARIES})
 target_include_directories(experiment_0 PRIVATE include)
+target_include_directories(experiment_0 PRIVATE ${Python3_INCLUDE_DIRS})
+target_include_directories(experiment_0 PRIVATE ${Python3_NumPy_INCLUDE_DIRS})
 
-add_executable(experiment_1 ${EXP2_SRC})
+add_executable(experiment_1 ${EXP1_SRC})
 target_link_libraries(experiment_1 PRIVATE ${SHARK_LIBRARIES})
 target_link_libraries(experiment_1 PRIVATE ${Boost_LIBRARIES})
 target_include_directories(experiment_1 PRIVATE include)

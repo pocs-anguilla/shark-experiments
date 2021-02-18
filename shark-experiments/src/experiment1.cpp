@@ -77,11 +77,6 @@ class RunTrials {
             fn.init();
             opt.init(fn);
 
-            std::cout << "Removing ouput directory" << std::endl;
-            fs::remove_all("output");
-            std::cout << "Creating output directory" << std::endl;
-            fs::create_directory("output");
-
             int nextEvaluationsLimit = 0;
             while (nextEvaluationsLimit < 50001) {
                 std::string optName;
@@ -139,6 +134,11 @@ int main() {
     constexpr int mu = 100;
 
     random::globalRng().seed(SEED);
+
+    std::cout << "Removing ouput directory" << std::endl;
+    fs::remove_all("output");
+    std::cout << "Creating output directory" << std::endl;
+    fs::create_directory("output");
 
     // Two objectives.
     {
