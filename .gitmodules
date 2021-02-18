@@ -1,3 +1,6 @@
 [submodule "shark-mod"]
 	path = shark-mod
 	url = ../shark-mod
+[submodule "cmake/polly"]
+	path = cmake/polly
+	url = https://github.com/ruslo/polly.git
